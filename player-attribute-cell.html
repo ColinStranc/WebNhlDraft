@@ -46,7 +46,7 @@
                         <div class="league-percentile">([[_calculateLeaguePercentile(attributeId, attributeValue)]])</div>
                     </template>
                     <template is="dom-if" if="{{compareWithPosition}}">
-                        <div class="position-percentile">([[_calculatePositionPercentile(attributeId, attributeValue)]])</div>
+                        <div class="position-percentile">([[_calculatePositionPercentile(attributeId, attributeValue, playerPosition)]])</div>
                     </template>
                     <template is="dom-if" if="{{compareWithAvailable}}">
                         <div class="available-percentile">([[_calculateAvailablePercentile(attributeId, attributeValue)]])</div>
@@ -84,6 +84,10 @@
             displayedPercentile: {
                 type: String,
                 observer: 'setDisplayedPercentile'
+            },
+            playerPosition: {
+                type: String,
+                value: 'Unset'
             }
         },
         _getAttributeName: function( id ) {
@@ -107,7 +111,11 @@
         _calculateLeaguePercentile: function( id, value ) {
             return this._calculatePercentile(id, value, 'league');
         },
-        _calculatePositionPercentile: function( id, value ) {
+        _calculatePositionPercentile: function( id, value, position ) {
+            if (position === 'Unset') {
+                console.log('cannot find positional percentile for "' + this.attributeName + '", not given player-position.');
+                return '-';
+            }
             return this._calculatePercentile(id, value, 'position');
         },
         _calculateAvailablePercentile: function( id, value ) {
