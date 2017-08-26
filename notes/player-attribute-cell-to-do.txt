@@ -1,0 +1,8 @@
+- handle missing information more gracefully and universally (if anything is missing give all '-' text)
+- styles
+    - colours (variable-ized would be great)
+    - space between rating and percentile
+    - name left-aligned to start of rating?
+- split compact styling and non-compact styling
+- capability to swap percentile filters
+- remove percentile logic to a window variable (or find some better way to do it...)
