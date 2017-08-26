@@ -23,10 +23,22 @@
                 width: 50px;
                 padding: 3px 5px;
             }
+
+            .league-percentile {
+                color: blue;
+            }
+
+            .position-percentile {
+                color: orangered;
+            }
+
+            .available-percentile {
+                color: grey;
+            }
         </style>
 
         <div class="container">
-            <div class="attribute-name">Acc</div>
+            <div class="attribute-name">[[attributeName]]</div>
             <div class="attribute-rankings">
                 <div class="attribute-value">[[attributeValue]]</div>
                 <div class="attribute-percentile">
@@ -49,6 +61,10 @@
         is: 'player-attribute-cell',
         properties: {
             attributeId: Number,
+            attributeName: {
+                type: String,
+                computed: '_getAttributeName(attributeId)'
+            },
             attributeValue: {
                 type: String,
                 value: '-'
@@ -69,6 +85,24 @@
                 type: String,
                 observer: 'setDisplayedPercentile'
             }
+        },
+        _getAttributeName: function( id ) {
+            if (id === 1) {
+                return 'Acc';
+            }
+            if (id === 2) {
+                return 'Spd';
+            }
+            if (id === 3) {
+                return 'OAw';
+            }
+            if (id === 4) {
+                return 'DAw';
+            }
+            if (id === 5) {
+                return 'Chk';
+            }
+            return '-';
         },
         _calculateLeaguePercentile: function( id, value ) {
             return this._calculatePercentile(id, value, 'league');
