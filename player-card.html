@@ -1,0 +1,74 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="player-attribute-cell.html">
+
+<dom-module id="player-card">
+
+    <template>
+        <style>
+            .container {
+                border: 1px;
+                border-style: solid;
+                display: inline-flex;
+                box-shadow: -1px 1px 1px;
+            }
+
+            .team-display {
+                background-color: yellowgreen;
+                width: 20px;
+                border-right-width: 1px;
+                border-right-style: solid;
+            }
+
+            .position-display {
+                background-color: red;
+                height: 5px;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+            }
+
+            .main-details {
+                display: inline-flex;
+                border-bottom: 2px solid;
+            }
+
+            .main-details > div {
+                border-right-style: solid;
+                border-right-width: 1px;
+                border-right-color: gray;
+                border-left-style: solid;
+                border-left-width: 1px;
+                border-left-color: gray;
+
+                margin: 2px 0;
+                padding: 0 4px;
+            }
+        </style>
+
+        <div class="container">
+            <div class="team-display"></div>
+            <div class="details">
+                <div class="position-display"></div>
+                <div class="attributes">
+                    <div class="main-details">
+                        <div>C/LH</div>
+                        <div class="player-name">
+                            <div class="player-first-name">Major</div>
+                            <div class="player-last-name">Middelstadt</div>
+                        </div>
+                        <div>89 4.575</div>
+                    </div>
+                    <div class="additional-details-preview">
+                        <player-attribute-cell displayed-percentile="league" attribute-id="1" attribute-value="81"></player-attribute-cell>
+                        <player-attribute-cell></player-attribute-cell>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+    Polymer({
+        is: 'player-card'
+    });
+    </script>
+</dom-module>

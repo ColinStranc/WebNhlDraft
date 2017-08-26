@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script>
+      /*
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+      */
+    </script>
+    <link rel="import" href="../player-card.html">
+    <link rel="import" href="../player-attribute-cell.html">
+  </head>
+
+  <style>
+    .component-display {
+      border: 1px solid;
+      margin: 10px;
+      padding: 5px;
+    }
+  </style>
+
+  <body>
+    <div class="component-display">
+      <player-card></player-card>
+    </div>
+    <div class="component-display">
+      <player-attribute-cell displayed-percentile="league" attribute-id="1" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell displayed-percentile="position" attribute-id="1" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell displayed-percentile="league" attribute-id="3" attribute-value="87"></player-attribute-cell>
+    </div>
+  </body>
+</html>

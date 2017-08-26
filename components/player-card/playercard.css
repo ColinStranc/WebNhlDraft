@@ -1,0 +1,31 @@
+.player-card-container {
+	display: inline-flex;
+}
+
+.team-display {
+	width: 20px;
+	background-color: yellow;
+}
+
+.player-card-details {
+}
+
+.position-display {
+	background-color: green;
+	height: 5px;
+}
+
+.player-main-details {
+	display: inline-flex;
+}
+
+.core-attributes {
+	display: inline-flex;
+}
+
+.player-additional-details {
+}
+
+.player-additional-attribute-preview {
+	display: inline-flex;
+}

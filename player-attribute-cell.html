@@ -1,0 +1,162 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="player-attribute-cell">
+    <template>
+        <style>
+            .attribute-rankings {
+                display: inline-flex;
+                color: #234A3D;
+            }
+
+            .attribute-name {
+                color: #6BE3B9;
+                font-size: 12px;
+                text-align: center;
+                line-height: 0.8;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                width: 50px;
+                padding: 3px 5px;
+            }
+        </style>
+
+        <div class="container">
+            <div class="attribute-name">Acc</div>
+            <div class="attribute-rankings">
+                <div class="attribute-value">[[attributeValue]]</div>
+                <div class="attribute-percentile">
+                    <template is="dom-if" if="{{compareWithLeague}}">
+                        <div class="league-percentile">([[_calculateLeaguePercentile(attributeId, attributeValue)]])</div>
+                    </template>
+                    <template is="dom-if" if="{{compareWithPosition}}">
+                        <div class="position-percentile">([[_calculatePositionPercentile(attributeId, attributeValue)]])</div>
+                    </template>
+                    <template is="dom-if" if="{{compareWithAvailable}}">
+                        <div class="available-percentile">([[_calculateAvailablePercentile(attributeId, attributeValue)]])</div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+    Polymer({
+        is: 'player-attribute-cell',
+        properties: {
+            attributeId: Number,
+            attributeValue: {
+                type: String,
+                value: '-'
+            },
+            compareWithLeague: {
+                type: Boolean,
+                value: false
+            },
+            compareWithPosition: {
+                type: Boolean,
+                value: false
+            },
+            compareWithAvailable: {
+                type: Boolean,
+                value: false
+            },
+            displayedPercentile: {
+                type: String,
+                observer: 'setDisplayedPercentile'
+            }
+        },
+        _calculateLeaguePercentile: function( id, value ) {
+            return this._calculatePercentile(id, value, 'league');
+        },
+        _calculatePositionPercentile: function( id, value ) {
+            return this._calculatePercentile(id, value, 'position');
+        },
+        _calculateAvailablePercentile: function( id, value ) {
+            return this._calculatePercentile(id, value, 'available');
+        },
+        _calculatePercentile: function( id, value, type ) {
+            var attr1leaguevalues = [78, 83, 84, 84, 86, 86, 87, 88, 90, 91];
+            var attr2leaguevalues = [62, 70, 79, 80, 80, 82, 82, 82, 82, 85];
+            var attr3leaguevalues = [75, 83, 83, 85, 88, 88, 88, 88, 89, 91];
+            var attr4leaguevalues = [81, 83, 83, 84, 86, 87, 91, 83, 93, 95];
+            var attr5leaguevalues = [80, 80, 80, 80, 85, 85, 85, 85, 90, 90];
+            var leageValueLists = [attr1leaguevalues, attr2leaguevalues, attr3leaguevalues, attr4leaguevalues, attr5leaguevalues];
+
+            var attr1positionvalues = [78, 86, 86, 90, 91];
+            var attr2positionvalues = [82, 82, 82, 82, 85];
+            var attr3positionvalues = [75, 83, 88, 88, 91];
+            var attr4positionvalues = [81, 83, 83, 84, 86, 87, 91];
+            var attr5positionvalues = [80, 80, 90, 90];
+            var positionValueLists = [attr1positionvalues, attr2positionvalues, attr3positionvalues, attr4positionvalues, attr5positionvalues];
+
+            var attr1availablevalues = [78, 83, 84, 84, 86, 87];
+            var attr2availablevalues = [62, 70, 79, 80];
+            var attr3availablevalues = [75, 83, 88, 88, 89];
+            var attr4availablevalues = [81, 83, 83, 84, 86];
+            var attr5availablevalues = [80, 80, 80, 85, 90, 90];
+            var availableValueLists = [attr1availablevalues, attr2availablevalues, attr3availablevalues, attr4availablevalues, attr5availablevalues];
+
+            var activeList;
+            if (type === 'league') {
+                activeList = leageValueLists[id-1];
+            }
+            if (type === 'position') {
+                activeList = positionValueLists[id-1];
+            }
+            if (type === 'available') {
+                activeList = availableValueLists[id-1];
+            }
+
+            return this.findPercentileInList(value, activeList);
+        },
+        findPercentileInList: function(value, list) {
+            var countValueIsGreaterThan = 0;
+            for (var i = 0; i < list.length; i++) {
+                if (value >= list[i]) {
+                    countValueIsGreaterThan += 1;
+                }
+            }
+
+            var proportion = countValueIsGreaterThan / list.length;
+            return Math.ceil(100*proportion);
+        },
+        calculatePercentiles: function(id, value) {
+            if (id === 1) {
+                this.leaguePercentile = 88;
+                this.positionPercentile = 100;
+                this.availablePercentile = 95;
+            }
+            if (id === 2) {
+                return 24;
+            }
+            if (id === 3) {
+                return 92;
+            }
+            return 100;
+        },
+        setDisplayedPercentile: function( name ) {
+            if (name === 'league') {
+                this.compareWithPosition = false;
+                this.compareWithAvailable = false;
+                this.compareWithLeague = true;
+            }
+            if (name === 'position') {
+                this.compareWithLeague = false;
+                this.compareWithAvailable = false;
+                this.compareWithPosition = true;
+            }
+            if (name === 'available') {
+                this.compareWithLeague = false;
+                this.compareWithPosition = false;
+                this.compareWithAvailable = true;
+            }
+        }
+
+    });
+    </script>
+</dom-module>
