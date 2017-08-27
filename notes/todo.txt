@@ -8,7 +8,6 @@
     - make component consistent height?
 - split compact styling and non-compact styling
 - capability to swap percentile filters
-- use long and short name for attribute (really make it an object)
 - how are we getting the attribute info?
 
 ## player-card todo ##
