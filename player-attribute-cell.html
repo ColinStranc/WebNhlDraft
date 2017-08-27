@@ -91,7 +91,7 @@
                 value: 'Unset'
             }
         },
-        _getAttributeName: function( id ) {
+        _getAttributeName: function(id) {
             // this knowledge obviously shouldn't be here.
             var attributes = ['ovr', 'sal', 'spd', 'ssa', 'ofa', 'dfa'];
             if (id <= attributes.length) {
@@ -99,23 +99,23 @@
             }
             return '-';
         },
-        _calculateLeaguePercentile: function( id, value ) {
+        _calculateLeaguePercentile: function(id, value) {
             return this._calculatePercentile(id, value, 'league');
         },
-        _calculatePositionPercentile: function( id, value, position ) {
+        _calculatePositionPercentile: function(id, value, position) {
             if (position === 'Unset') {
                 console.log('cannot find positional percentile for "' + this.attributeName + '", not given player-position.');
                 return '-';
             }
             return this._calculatePercentile(id, value, 'position', position);
         },
-        _calculateAvailablePercentile: function( id, value ) {
+        _calculateAvailablePercentile: function(id, value) {
             return this._calculatePercentile(id, value, 'available');
         },
         _calculatePercentile: function(id, value, type, position = null) {
             return window.webNhlDraft.percentileFunctionality.calculatePercentile(id, value, type, position);
         },
-        setDisplayedPercentile: function( name ) {
+        setDisplayedPercentile: function(name) {
             if (name === 'league') {
                 this.compareWithPosition = false;
                 this.compareWithAvailable = false;
@@ -132,7 +132,6 @@
                 this.compareWithAvailable = true;
             }
         }
-
     });
     </script>
 </dom-module>

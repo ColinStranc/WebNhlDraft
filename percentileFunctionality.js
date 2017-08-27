@@ -55,12 +55,6 @@ var percentileFunctionality = {
             [92, 91, 92, 92, 93, 94, 93, 92, 94, 93]
         ];
     }
-    ,test: function() {
-        return this.anotherTest();
-    },
-    anotherTest: function() {
-        return "this another kdi sog";
-    }
 };
 
 window.webNhlDraft = window.webNhlDraft || {};
