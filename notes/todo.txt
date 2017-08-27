@@ -4,11 +4,20 @@
     - colours (variable-ized would be great)
     - space between rating and percentile
     - name left-aligned to start of rating?
+    - do I really want to represent percentile type by color?
 - split compact styling and non-compact styling
 - capability to swap percentile filters
 - remove percentile logic to a window variable (or find some better way to do it...)
+- use long and short name for attribute (really make it an object)
+- deal with the skater/goalie stat split
 
 ## player-card todo ##
 - styles
     - well, lots still...
 - lots of other stuff too.
+- Preview row stacks things horizontally
+- add full detail attribute section, and the more link to make it appear
+
+## percentile calculations ##
+- ascending vs. descending comparisons (aka overall vs. salary)
+- get data from actual data place

@@ -92,20 +92,10 @@
             }
         },
         _getAttributeName: function( id ) {
-            if (id === 1) {
-                return 'Acc';
-            }
-            if (id === 2) {
-                return 'Spd';
-            }
-            if (id === 3) {
-                return 'OAw';
-            }
-            if (id === 4) {
-                return 'DAw';
-            }
-            if (id === 5) {
-                return 'Chk';
+            // this knowledge obviously shouldn't be here.
+            var attributes = ['ovr', 'sal', 'spd', 'ssa', 'ofa', 'dfa'];
+            if (id <= attributes.length) {
+                return attributes[id-1];
             }
             return '-';
         },
@@ -122,7 +112,10 @@
         _calculateAvailablePercentile: function( id, value ) {
             return this._calculatePercentile(id, value, 'available');
         },
-        _calculatePercentile: function( id, value, type ) {
+        _calculatePercentile: function(id, value, type) {
+            return window.webNhlDraft.percentileFunctionality.calculatePercentile(id, value, type);
+        },
+        _calculatePercentileOld: function( id, value, type ) {
             var attr1leaguevalues = [78, 83, 84, 84, 86, 86, 87, 88, 90, 91];
             var attr2leaguevalues = [62, 70, 79, 80, 80, 82, 82, 82, 82, 85];
             var attr3leaguevalues = [75, 83, 83, 85, 88, 88, 88, 88, 89, 91];

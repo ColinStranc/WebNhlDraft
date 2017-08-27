@@ -6,8 +6,12 @@
       
       window.Polymer = window.Polymer || {};
       window.Polymer.dom = 'shadow';
+
+      // window.webNhlDraft = window.webNhlDraft || {};
+      // window.webNhlDraft.percentileFunctionality = 'well howdy';
       
     </script>
+    <script src="../percentileFunctionality.js"></script>
     <link rel="import" href="../player-card.html">
     <link rel="import" href="../player-attribute-cell.html">
   </head>
@@ -25,10 +29,10 @@
       <player-card></player-card>
     </div>
     <div class="component-display">
-      <player-attribute-cell displayed-percentile="league" attribute-id="1" attribute-value="87"></player-attribute-cell>
-      <player-attribute-cell displayed-percentile="position" player-position="C" attribute-id="1" attribute-value="87"></player-attribute-cell>
       <player-attribute-cell displayed-percentile="league" attribute-id="3" attribute-value="87"></player-attribute-cell>
-      <player-attribute-cell displayed-percentile="position" attribute-id="1" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell displayed-percentile="position" player-position="C" attribute-id="3" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell displayed-percentile="league" attribute-id="4" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell displayed-percentile="position" attribute-id="3" attribute-value="87"></player-attribute-cell>
     </div>
   </body>
 </html>
