@@ -1,5 +1,5 @@
 var percentileFunctionality = {
-    calculatePercentile: function(attributeId, attributeValue, filter) {
+    calculatePercentile: function(attributeId, attributeValue, filter, position) {
         var allValues = this.getAllValues();
         var attributeValues = allValues[attributeId-1];
         var filteredList;

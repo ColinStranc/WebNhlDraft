@@ -107,13 +107,13 @@
                 console.log('cannot find positional percentile for "' + this.attributeName + '", not given player-position.');
                 return '-';
             }
-            return this._calculatePercentile(id, value, 'position');
+            return this._calculatePercentile(id, value, 'position', position);
         },
         _calculateAvailablePercentile: function( id, value ) {
             return this._calculatePercentile(id, value, 'available');
         },
-        _calculatePercentile: function(id, value, type) {
-            return window.webNhlDraft.percentileFunctionality.calculatePercentile(id, value, type);
+        _calculatePercentile: function(id, value, type, position = null) {
+            return window.webNhlDraft.percentileFunctionality.calculatePercentile(id, value, type, position);
         },
         setDisplayedPercentile: function( name ) {
             if (name === 'league') {
