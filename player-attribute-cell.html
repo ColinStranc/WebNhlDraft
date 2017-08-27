@@ -38,7 +38,7 @@
         </style>
 
         <div class="container">
-            <div class="attribute-name">[[attributeName]]</div>
+            <div class="attribute-name">[[attributeName.shortName]]</div>
             <div class="attribute-rankings">
                 <div class="attribute-value">[[attributeValue]]</div>
                 <div class="attribute-percentile">
@@ -93,7 +93,9 @@
         },
         _getAttributeName: function(id) {
             // this knowledge obviously shouldn't be here.
-            var attributes = ['ovr', 'sal', 'spd', 'ssa', 'ofa', 'dfa'];
+            var attributes = [{shortName: 'OVR', longName: 'Overall'}, {shortName: 'SAL', longName: 'Salary'}, 
+                                {shortName: 'SPD', longName: 'Speed'}, {shortName: 'SSA', longName: 'Slap Shot Accuracy'},
+                                {shortName: 'OFA', longName: 'Offensive Awareness'}, {shortName: 'DFA', longName: 'Defensive Awareness'}];
             if (id <= attributes.length) {
                 return attributes[id-1];
             }

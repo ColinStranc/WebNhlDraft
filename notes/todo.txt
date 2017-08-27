@@ -5,10 +5,11 @@
     - space between rating and percentile
     - name left-aligned to start of rating?
     - do I really want to represent percentile type by color?
+    - make component consistent height?
 - split compact styling and non-compact styling
 - capability to swap percentile filters
 - use long and short name for attribute (really make it an object)
-- deal with the skater/goalie stat split
+- how are we getting the attribute info?
 
 ## player-card todo ##
 - styles
@@ -20,3 +21,4 @@
 ## percentile calculations ##
 - ascending vs. descending comparisons (aka overall vs. salary)
 - get data from actual data place
+- deal with the skater/goalie stat split
