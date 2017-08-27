@@ -1,3 +1,4 @@
+## attribute-cell todo ##
 - handle missing information more gracefully and universally (if anything is missing give all '-' text)
 - styles
     - colours (variable-ized would be great)
@@ -6,3 +7,8 @@
 - split compact styling and non-compact styling
 - capability to swap percentile filters
 - remove percentile logic to a window variable (or find some better way to do it...)
+
+## player-card todo ##
+- styles
+    - well, lots still...
+- lots of other stuff too.
