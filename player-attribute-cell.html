@@ -53,15 +53,7 @@
             <div class="attribute-rankings">
                 <div class="attribute-value">[[attributeValue]]</div>
                 <div class="attribute-percentile">
-                    <template is="dom-if" if="{{compareWithLeague}}">
-                        <div class="league-percentile">([[_calculateLeaguePercentile(attributeId, attributeValue)]])</div>
-                    </template>
-                    <template is="dom-if" if="{{compareWithPosition}}">
-                        <div class="position-percentile">([[_calculatePositionPercentile(attributeId, attributeValue, playerPosition)]])</div>
-                    </template>
-                    <template is="dom-if" if="{{compareWithAvailable}}">
-                        <div class="available-percentile">([[_calculateAvailablePercentile(attributeId, attributeValue)]])</div>
-                    </template>   
+                    <div>([[_filteredPercentile]])</div>
                 </div>
             </div>
             <div class="filter-indicators">
@@ -97,22 +89,10 @@
                 type: Boolean,
                 value: false
             },
-            compareWithLeague: {
-                type: Boolean,
-                value: false
-            },
-            compareWithPosition: {
-                type: Boolean,
-                value: false
-            },
-            compareWithAvailable: {
-                type: Boolean,
-                value: false
-            },
-            displayedPercentile: {
-                type: String,
-                value: 'league',
-                observer: 'setDisplayedPercentile'
+            _filteredPercentile: {
+                type: String, // is this the right way to allow for '-' and percentiles?
+                value: '-',
+                computed: '_calculatePercentile(attributeId, attributeValue, filterByPosition, filterByAvailability, playerPosition)'
             },
             playerPosition: {
                 type: String,
@@ -155,38 +135,8 @@
             }
             return '-';
         },
-        _calculateLeaguePercentile: function(id, value) {
-            return this._calculatePercentile(id, value, 'league');
-        },
-        _calculatePositionPercentile: function(id, value, position) {
-            if (position === 'Unset') {
-                console.log('cannot find positional percentile for "' + this.attributeName + '", not given player-position.');
-                return '-';
-            }
-            return this._calculatePercentile(id, value, 'position', position);
-        },
-        _calculateAvailablePercentile: function(id, value) {
-            return this._calculatePercentile(id, value, 'available');
-        },
-        _calculatePercentile: function(id, value, type, position = null) {
-            return window.webNhlDraft.percentileFunctionality.calculatePercentile(id, value, type, position);
-        },
-        setDisplayedPercentile: function(name) {
-            if (name === 'league') {
-                this.compareWithPosition = false;
-                this.compareWithAvailable = false;
-                this.compareWithLeague = true;
-            }
-            if (name === 'position') {
-                this.compareWithLeague = false;
-                this.compareWithAvailable = false;
-                this.compareWithPosition = true;
-            }
-            if (name === 'available') {
-                this.compareWithLeague = false;
-                this.compareWithPosition = false;
-                this.compareWithAvailable = true;
-            }
+        _calculatePercentile: function(id, value, filterByPosition, filterByAvailability, playerPosition) {
+            return window.webNhlDraft.percentileFunctionality.calculatePercentile(id, value, filterByPosition, filterByAvailability, playerPosition);
         }
     });
     </script>

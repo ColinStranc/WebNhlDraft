@@ -1,5 +1,12 @@
 var percentileFunctionality = {
-    calculatePercentile: function(attributeId, attributeValue, filter, position) {
+    calculatePercentile: function(attributeId, attributeValue, filterByPosition, filterByAvailability, position) {
+        var filter = 'league';
+        if (filterByPosition) {
+            filter = 'position';
+        } else if (filterByAvailability) {
+            filter = 'available';
+        }
+        
         var allValues = this.getAllValues();
         var attributeValues = allValues[attributeId-1];
         var filteredList;
