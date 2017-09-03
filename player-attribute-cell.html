@@ -58,12 +58,12 @@
             </div>
             <div class="filter-indicators">
                 <div class="position-filters filters">
-                    <div class="league-filter filter">L</div>
-                    <div class="position-filter filter" selected>P</div>
+                    <div class="league-filter filter" on-click="_turnPositionFilterOff">L</div>
+                    <div class="position-filter filter" on-click="_turnPositionFilterOn">P</div>
                 </div>
                 <div class="availability-filters filters">
-                    <div class="any-availability-filter filter" selected>T</div>
-                    <div class="available-filter filter">A</div>
+                    <div class="any-availability-filter filter" on-click="_turnAvailabilityFilterOff">T</div>
+                    <div class="available-filter filter" on-click="_turnAvailabilityFilterOn">A</div>
             </div>
         </div>
     </template>
@@ -124,6 +124,20 @@
                 onlyAvailableFilter.removeAttribute('selected');
                 allAvailabilityFilter.setAttribute('selected', '');
             }
+        },
+        _turnPositionFilterOn: function(e) {
+            this.filterByPosition = true;
+        },
+        
+        _turnPositionFilterOff: function(e) {
+            this.filterByPosition = false;
+        },
+        
+        _turnAvailabilityFilterOn: function(e) {
+            this.filterByAvailability = true;
+        },
+        _turnAvailabilityFilterOff: function(e) {
+            this.filterByAvailability = false;
         },
         _getAttributeName: function(id) {
             // this knowledge obviously shouldn't be here.
