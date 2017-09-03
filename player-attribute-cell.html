@@ -19,9 +19,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-
-                width: 50px;
-                padding: 3px 5px;
+                max-width: 75px;
             }
 
             .league-percentile {
@@ -34,6 +32,19 @@
 
             .available-percentile {
                 color: grey;
+            }
+
+            .filters {
+                display: inline-flex;
+            }
+            .filter-indicators {
+                font-size: 10px;
+            }
+            .filter[selected] {
+                border: 1px solid red;
+            }
+            .filter {
+                margin: 2px;
             }
         </style>
 
@@ -50,8 +61,17 @@
                     </template>
                     <template is="dom-if" if="{{compareWithAvailable}}">
                         <div class="available-percentile">([[_calculateAvailablePercentile(attributeId, attributeValue)]])</div>
-                    </template>
+                    </template>   
                 </div>
+            </div>
+            <div class="filter-indicators">
+                <div class="position-filters filters">
+                    <div class="league-filter filter">L</div>
+                    <div class="position-filter filter" selected>P</div>
+                </div>
+                <div class="availability-filters filters">
+                    <div class="any-availability-filter filter" selected>T</div>
+                    <div class="available-filter filter">A</div>
             </div>
         </div>
     </template>
@@ -68,6 +88,14 @@
             attributeValue: {
                 type: String,
                 value: '-'
+            },
+            filterByPosition: {
+                type: Boolean,
+                value: false
+            },
+            filterByAvailability: {
+                type: Boolean,
+                value: false
             },
             compareWithLeague: {
                 type: Boolean,
@@ -89,6 +117,32 @@
             playerPosition: {
                 type: String,
                 value: 'Unset'
+            }
+        },
+        observers: [
+            '_onFilterChange(filterByPosition, filterByAvailability)'
+        ],
+        _onFilterChange: function(byPosition, byAvailability) {
+            var filterGroups = this.$$('.filter-indicators');
+            var allPositionFilter = filterGroups.querySelector('.league-filter');
+            var onlyThisPositionFilter = filterGroups.querySelector('.position-filter');
+            var allAvailabilityFilter = filterGroups.querySelector('.any-availability-filter');
+            var onlyAvailableFilter = filterGroups.querySelector('.available-filter');
+
+            if (byPosition) {
+                onlyThisPositionFilter.setAttribute('selected', '');
+                allPositionFilter.removeAttribute('selected');
+            } else {
+                onlyThisPositionFilter.removeAttribute('selected');
+                allPositionFilter.setAttribute('selected', '');
+            }
+
+            if (byAvailability) {
+                onlyAvailableFilter.setAttribute('selected', '');
+                allAvailabilityFilter.removeAttribute('selected');
+            } else {
+                onlyAvailableFilter.removeAttribute('selected');
+                allAvailabilityFilter.setAttribute('selected', '');
             }
         },
         _getAttributeName: function(id) {
