@@ -7,7 +7,6 @@
     - do I really want to represent percentile type by color?
     - make component consistent height?
 - split compact styling and non-compact styling
-- capability to swap percentile filters
 - how are we getting the attribute info?
     - being passed an attributeId, where is this linked to an attribute object?
 - should the different filters really be individual templates?
