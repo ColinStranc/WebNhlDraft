@@ -30,10 +30,65 @@
       <player-card></player-card>
     </div>
     <div class="component-display">
-      <player-attribute-cell displayed-percentile="league" attribute-id="3" attribute-value="87"></player-attribute-cell>
-      <player-attribute-cell displayed-percentile="position" filter-by-position="true" player-position="C" attribute-id="3" attribute-value="87"></player-attribute-cell>
-      <player-attribute-cell displayed-percentile="league" attribute-id="4" attribute-value="87"></player-attribute-cell>
-      <player-attribute-cell displayed-percentile="position" filter-by-position="true" attribute-id="3" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell attribute-id="3" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell filter-by-position="true" player-position="C" attribute-id="3" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell attribute-id="4" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell filter-by-position="true" attribute-id="3" attribute-value="87"></player-attribute-cell>
+      <!-- 
+        no filter, all values given
+          display beautifully
+          attribute name
+          attribute value
+          percentile
+          should indicate "league" is selected
+          should indicate "position" is not selected
+          should indicate "all availabilities" is selected
+          should indicate "available" is not selected
+        modify only attribute value
+          value should change
+          percentile should (most likely) change
+        modify only the attribute id
+          attribute name should change
+          percentile should change
+        add filter by position with position C only
+          percentile changes
+          should indicate "league" is not selected
+          should indicate "position" is selected
+        add filter by position with position D only
+          percentile changes
+          should indicate "league" is not selected
+          should indicate "position" is selected
+        add filter by available only
+          percentile changes
+          should indicate "all availabilities" is not selected
+          should indicate "available" is selected
+        add filter by position with position C and available
+          percentile changes
+          should indicate "league" is not selected
+          should indicate "position" is selected
+          should indicate "all availabilities" is not selected
+          should indicate "available" is selected
+        add filter by position with no position given
+          percentile should not be displayed (-)
+          give a console message
+          should indicate "league" is not selected
+          should indicate "position" is selected
+        do not give attribute id
+          just display '-'
+          console message that includes intended id (if any) and value (if any)
+        do not give attribute value
+          value should not be displayed (-)
+          percentile should not be displayed (-)
+        do not give attribute id but filter by available
+          just display '-'
+          console message that includes intended id (if any) and value (if any)
+        do not give attribute value but filter by available
+          value should not be displayed (-)
+          percentile should not be displayed (-)
+          should indicate "all availabilities" is not selected
+          should indicate "available" is selected
+        put filter by position false with no position
+          -- no change -->
     </div>
   </body>
 </html>
