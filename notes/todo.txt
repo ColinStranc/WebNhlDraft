@@ -7,7 +7,8 @@
     - name left-aligned to start of rating?
     - do I really want to represent percentile type by color?
     - make component consistent height?
-- split compact styling and non-compact styling
+    - lots of work for non-compact styling
+        - width of name.
 
 ## player-card todo ##
 - styles
