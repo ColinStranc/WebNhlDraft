@@ -1,5 +1,50 @@
 var dataProvider = {
-    rawData: {
+    getPlayers: function(position='', available=false) {
+        var playersToReturn = this._rawData.players;
+        
+        if (position !== '') {
+            playersToReturn = playersToReturn.filter((p) => {
+                return p.position === position;
+            });
+        }
+        if (available) {
+            // once transactions are made this can be done...
+        }
+
+        return this._createReturnablePlayerObjects(playersToReturn);
+    },
+    _createReturnablePlayerObjects: function(returnedPlayersData) {
+        var returnedPlayerObjects = [];
+
+        for (var p = 0; p < returnedPlayersData.length; p++) {
+            var playerObject = returnedPlayersData[p];
+            var playerObjectAttributes = [];
+            var attrs = this._rawData.attributes;
+
+            for (var a = 0; a < attrs.length; a++) {
+                var attributeObject = attrs[a];
+                var playerAttributeData = this._rawData.playerAttributes.find((pa) => {
+                    return pa.playerId === playerObject.id && 
+                        pa.ratingPackId === this.activeRatingPack &&
+                        pa.attributeId === attributeObject.id;
+                });
+                attributeObject.attributeValue = playerAttributeData.attributeValue;
+                playerObjectAttributes.push(attributeObject);
+            }
+
+            this._attachCustomAttributes(playerObjectAttributes);
+
+            playerObject.attributes = JSON.parse(JSON.stringify(playerObjectAttributes));
+            returnedPlayerObjects.push(playerObject);
+        }
+
+        return returnedPlayerObjects;
+    },
+    _attachCustomAttributes: function(attributeObject) {
+        // do later, may have some trouble with attribute IDs here...
+    },
+    activeRatingPack: 1,
+    _rawData: {
         players: [
             {
                 id: 1,

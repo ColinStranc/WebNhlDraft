@@ -1,39 +1,28 @@
 var percentileFunctionality = {
     calculatePercentile: function(attributeId, attributeValue, filterByPosition, filterByAvailability, position) {
-        var filter = 'league';
+        var players = [];
         if (filterByPosition) {
-            filter = 'position';
-        } else if (filterByAvailability) {
-            filter = 'available';
-        }
-        
-        var allValues = this.getAllValues();
-        var attributeValues = allValues[attributeId-1];
-        var filteredList;
-        if (filter === 'league') {
-            filteredList = attributeValues;
-        }
-        if (filter === 'position') {
-            filteredList = [];
-            filteredList.push(attributeValues[0]);
-            filteredList.push(attributeValues[2]);
-            filteredList.push(attributeValues[3]);
-            filteredList.push(attributeValues[7]);
-            filteredList.push(attributeValues[8]);
-            filteredList.push(attributeValues[9]);
-        }
-        if (filter === 'available') {
-            filteredList = [];
-            filteredList.push(attributeValues[0]);
-            filteredList.push(attributeValues[2]);
-            filteredList.push(attributeValues[3]);
-            filteredList.push(attributeValues[4]);
-            filteredList.push(attributeValues[5]);
-            filteredList.push(attributeValues[6]);
-            filteredList.push(attributeValues[7]);
+            if (filterByAvailability) {
+                players = window.webNhlDraft.dataProvider.getPlayers(position, true);
+            } else {
+                players = window.webNhlDraft.dataProvider.getPlayers(position, false);
+            }
+        } else {
+            if (filterByAvailability) {
+                players = window.webNhlDraft.dataProvider.getPlayers('', true);
+            } else {
+                players = window.webNhlDraft.dataProvider.getPlayers('', false);
+            }
         }
 
-        return this.getPercentileOfValueInList(attributeValue, filteredList);
+        var attributeValuePopulation = players.map((p) => {
+            var attributeValueExample = p.attributes.find((a) => {
+                return a.id === attributeId;
+            });
+            return attributeValueExample.attributeValue;
+        });
+
+        return this.getPercentileOfValueInList(attributeValue, attributeValuePopulation);
     },
     getPercentileOfValueInList: function(value, list) {
         var countValueIsGreaterThan = 0;
