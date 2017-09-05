@@ -2,6 +2,15 @@ var dataProvider = {
     getAttributes: function() {
         return this._rawData.attributes;
     },
+    getPlayer: function(id) {
+        var allPlayers = this._rawData.players;
+
+        var player = allPlayers.find((p) => {
+            return p.id === id;
+        });
+
+        return this._createReturnablePlayerObject(player);
+    },
     getPlayers: function(position='', available=false) {
         var playersToReturn = this._rawData.players;
         
@@ -20,28 +29,32 @@ var dataProvider = {
         var returnedPlayerObjects = [];
 
         for (var p = 0; p < returnedPlayersData.length; p++) {
-            var playerObject = returnedPlayersData[p];
-            var playerObjectAttributes = [];
-            var attrs = this._rawData.attributes;
-
-            for (var a = 0; a < attrs.length; a++) {
-                var attributeObject = attrs[a];
-                var playerAttributeData = this._rawData.playerAttributes.find((pa) => {
-                    return pa.playerId === playerObject.id && 
-                        pa.ratingPackId === this.activeRatingPack &&
-                        pa.attributeId === attributeObject.id;
-                });
-                attributeObject.attributeValue = playerAttributeData.attributeValue;
-                playerObjectAttributes.push(attributeObject);
-            }
-
-            this._attachCustomAttributes(playerObjectAttributes);
-
-            playerObject.attributes = JSON.parse(JSON.stringify(playerObjectAttributes));
+            var playerObject = this._createReturnablePlayerObject(returnedPlayersData[p]);
+            
             returnedPlayerObjects.push(playerObject);
         }
 
         return returnedPlayerObjects;
+    },
+    _createReturnablePlayerObject: function(playerObject) {
+        var playerObjectAttributes = [];
+        var attrs = this._rawData.attributes;
+
+        for (var a = 0; a < attrs.length; a++) {
+            var attributeObject = attrs[a];
+            var playerAttributeData = this._rawData.playerAttributes.find((pa) => {
+                return pa.playerId === playerObject.id && 
+                    pa.ratingPackId === this.activeRatingPack &&
+                    pa.attributeId === attributeObject.id;
+            });
+            attributeObject.attributeValue = playerAttributeData.attributeValue;
+            playerObjectAttributes.push(attributeObject);
+        }
+
+        this._attachCustomAttributes(playerObjectAttributes);
+        playerObject.attributes = JSON.parse(JSON.stringify(playerObjectAttributes));
+
+        return playerObject;
     },
     _attachCustomAttributes: function(attributeObject) {
         // do later, may have some trouble with attribute IDs here...
