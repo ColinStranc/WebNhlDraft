@@ -31,10 +31,22 @@
       <player-card></player-card>
     </div>
     <div class="component-display">
-      <player-attribute-cell is-compact attribute-id="3" player-position="C" attribute-value="87"></player-attribute-cell>
-      <player-attribute-cell filter-by-position="true" player-position="C" attribute-id="3" attribute-value="87"></player-attribute-cell>
-      <player-attribute-cell attribute-id="4" player-position="C" attribute-value="87"></player-attribute-cell>
-      <player-attribute-cell is-compact filter-by-position="true" player-position="C" attribute-id="3" attribute-value="87"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="5" attribute-value="87" player-position="C"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="5" attribute-value="89" player-position="C"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="3" attribute-value="87" player-position="C"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="5" attribute-value="87" filter-by-position player-position="C"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="5" attribute-value="87" filter-by-position player-position="D"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="5" attribute-value="87" filter-by-available player-position="C"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="5" attribute-value="87" filter-by-position filter-by-available player-position="C"></player-attribute-cell>
+    </div>
+    <div class="component-display">
+      <player-attribute-cell is-compact attribute-id="5" attribute-value="87" filter-by-position></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-value="87" player-position="C"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="5" player-position="C"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-value="87" filter-by-available player-position="C"></player-attribute-cell>
+      <player-attribute-cell is-compact attribute-id="5" filter-by-available player-position="C"></player-attribute-cell>
+    </div>
+
       <!-- 
         no filter, all values given
           display beautifully
@@ -87,9 +99,6 @@
           value should not be displayed (-)
           percentile should not be displayed (-)
           should indicate "all availabilities" is not selected
-          should indicate "available" is selected
-        put filter by position false with no position
-          -- no change -->
-    </div>
+          should indicate "available" is selected -->
   </body>
 </html>
