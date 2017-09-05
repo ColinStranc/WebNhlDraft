@@ -20,10 +20,21 @@
             }
 
             .position-display {
-                background-color: red;
                 height: 5px;
                 border-bottom-width: 1px;
                 border-bottom-style: solid;
+            }
+
+            .position-display[position=F] {
+                background-color: red; 
+            }
+
+            .position-display[position=D] {
+                background-color: green;
+            }
+
+            .position-display[position=G] {
+                background-color: blue;
             }
 
             .main-details {
@@ -96,6 +107,9 @@
                 computed: '_getPreviewAdditionalAttributes(_playerData)'
             }
         },
+        observers: [
+            '_setUpColorsAfterPlayerDataChange(_playerData)'
+        ],
         _getPlayerObject: function(id) {
             return window.webNhlDraft.dataProvider.getPlayer(id);
         },
@@ -123,6 +137,19 @@
             });
 
             return attr;
+        },
+        _setUpColorsAfterPlayerDataChange: function(newData) {
+            var position = newData.position;
+
+            var positionIndicator = this.$$('.position-display');
+            var positionAttributeName = 'position';
+            if (position === 'C' || position === 'LW' || position === 'RW') {
+                positionIndicator.setAttribute(positionAttributeName, 'F');
+            } else if (position === 'D') {
+                positionIndicator.setAttribute(positionAttributeName, 'D');
+            } else if (position === 'G') {
+                positionIndicator.setAttribute(positionAttributeName, 'G');
+            }
         }
     });
     </script>
