@@ -1,4 +1,7 @@
 var dataProvider = {
+    getAttributes: function() {
+        return this._rawData.attributes;
+    },
     getPlayers: function(position='', available=false) {
         var playersToReturn = this._rawData.players;
         

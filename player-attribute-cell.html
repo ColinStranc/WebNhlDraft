@@ -140,14 +140,15 @@
             this.filterByAvailability = false;
         },
         _getAttributeName: function(id) {
-            // this knowledge obviously shouldn't be here.
-            var attributes = [{shortName: 'OVR', longName: 'Overall'}, {shortName: 'SAL', longName: 'Salary'}, 
-                                {shortName: 'SPD', longName: 'Speed'}, {shortName: 'SSA', longName: 'Slap Shot Accuracy'},
-                                {shortName: 'OFA', longName: 'Offensive Awareness'}, {shortName: 'DFA', longName: 'Defensive Awareness'}];
-            if (id <= attributes.length) {
-                return attributes[id-1];
+            var attributes = window.webNhlDraft.dataProvider.getAttributes();
+            var attribute = attributes.find((a) => {
+                return a.id === id;
+            });
+            if (attribute) {
+                return attribute;
+            } else {
+                return '-';
             }
-            return '-';
         },
         _calculatePercentile: function(id, value, filterByPosition, filterByAvailability, playerPosition) {
             if (filterByPosition && playerPosition === '') {

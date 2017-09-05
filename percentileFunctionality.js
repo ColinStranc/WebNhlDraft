@@ -34,22 +34,6 @@ var percentileFunctionality = {
 
         var proportion = countValueIsGreaterThan / list.length;
         return Math.ceil(100*proportion);
-    },
-    getAllValues: function() {
-        return [
-            // overalls
-            [88, 88, 88, 89, 89, 90, 90, 90, 91, 91],
-            // salary
-            [6.5, 4, 7.25, 7.86, 7.54, 5.54, 7.88, 8, 7, 6.5],
-            // speed
-            [87, 88, 89, 85, 88, 90, 86, 87, 90, 93],
-            // slap shot accuracy
-            [80, 83, 80, 81, 80, 84, 80, 86, 83, 89],
-            // offensive awareness
-            [91, 91, 90, 89, 91, 94, 90, 93, 94, 95],
-            // defensive awareness
-            [92, 91, 92, 92, 93, 94, 93, 92, 94, 93]
-        ];
     }
 };
 

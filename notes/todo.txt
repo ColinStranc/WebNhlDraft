@@ -1,5 +1,6 @@
 ## attribute-cell todo ##
 - handle missing information more gracefully and universally (if anything is missing give all '-' text)
+    - if attribute id is invalid, things should '-' gracefully.
 - styles
     - colours (variable-ized would be great)
     - space between rating and percentile
@@ -7,9 +8,6 @@
     - do I really want to represent percentile type by color?
     - make component consistent height?
 - split compact styling and non-compact styling
-- how are we getting the attribute info?
-    - being passed an attributeId, where is this linked to an attribute object?
-- should the different filters really be individual templates?
 
 ## player-card todo ##
 - styles
@@ -20,5 +18,4 @@
 
 ## percentile calculations ##
 - ascending vs. descending comparisons (aka overall vs. salary)
-- get data from actual data place
 - deal with the skater/goalie stat split
