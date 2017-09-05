@@ -96,7 +96,7 @@
             },
             playerPosition: {
                 type: String,
-                value: 'Unset'
+                value: ''
             }
         },
         observers: [
@@ -150,6 +150,10 @@
             return '-';
         },
         _calculatePercentile: function(id, value, filterByPosition, filterByAvailability, playerPosition) {
+            if (filterByPosition && playerPosition === '') {
+                console.log('cannot find positional percentile for "' + this.attributeName + '", not given player-position.');
+                return '-';
+            }
             return window.webNhlDraft.percentileFunctionality.calculatePercentile(id, value, filterByPosition, filterByAvailability, playerPosition);
         }
     });
