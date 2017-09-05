@@ -54,8 +54,18 @@
                 padding: 0 4px;
             }
 
+            .additional-details-preview {
+                display: inline-flex;
+            }
+
             .universal-attributes-list {
                 display: inline-flex;
+            }
+
+            .see-more-bar {
+                border-top: 1px solid black;
+                text-align: center;
+                font-size: 9px;
             }
         </style>
 
@@ -84,6 +94,7 @@
                             <player-attribute-cell is-compact attribute-id="{{item.id}}" attribute-value="{{item.attributeValue}}" player-position="[[_playerData.position]]"></player-attribute-cell>
                         </template>
                     </div>
+                    <div class="see-more-bar">+</div>
                 </div>
             </div>
         </div>
