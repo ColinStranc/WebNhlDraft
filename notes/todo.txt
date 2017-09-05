@@ -13,6 +13,8 @@
 ## player-card todo ##
 - styles
     - well, lots still...
+    - handedness and position seperated properly
+    - 
 - lots of other stuff too.
 - Preview row stacks things horizontally
 - add full detail attribute section, and the more link to make it appear
@@ -20,3 +22,7 @@
 ## percentile calculations ##
 - ascending vs. descending comparisons (aka overall vs. salary)
 - deal with the skater/goalie stat split
+
+## data provider ##
+- computed stats
+- transactions

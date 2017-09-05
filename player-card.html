@@ -63,13 +63,15 @@
                             <div class="player-last-name">[[_playerData.lastName]]</div>
                         </div>
                         <div class="universal-attributes-list">
-                            <player-attribute-cell attribute-id="1" player-position="C" attribute-value="89" is-compact></player-attribute-cell>
-                            <player-attribute-cell attribute-id="2" player-position="C" attribute-value="4.575" is-compact></player-attribute-cell>
+                            <template is="dom-repeat" items={{_universalAttributes}}>
+                                <player-attribute-cell is-compact attribute-id="{{item.id}}" attribute-value="{{item.attributeValue}}" player-position="[[_playerData.position]]"></player-attribute-cell>
+                            </template>
                         </div>
                     </div>
                     <div class="additional-details-preview">
-                        <player-attribute-cell player-position="C" attribute-id="3" attribute-value="81" is-compact></player-attribute-cell>
-                        <player-attribute-cell is-compact></player-attribute-cell>
+                        <template is="dom-repeat" items={{_previewAdditionalAttributes}}>
+                            <player-attribute-cell is-compact attribute-id="{{item.id}}" attribute-value="{{item.attributeValue}}" player-position="[[_playerData.position]]"></player-attribute-cell>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -84,10 +86,43 @@
             _playerData: {
                 type: Object,
                 computed: '_getPlayerObject(playerId)'
+            },
+            _universalAttributes: {
+                type: Array,
+                computed: '_getUniversalAttributes(_playerData)'
+            },
+            _previewAdditionalAttributes: {
+                type: Array,
+                computed: '_getPreviewAdditionalAttributes(_playerData)'
             }
         },
         _getPlayerObject: function(id) {
             return window.webNhlDraft.dataProvider.getPlayer(id);
+        },
+        _getUniversalAttributes: function(playerData) {
+            var universalAttributes = [];
+
+            universalAttributes.push(this._getAttributeFromAttributes('Overall', playerData.attributes));
+            universalAttributes.push(this._getAttributeFromAttributes('Salary', playerData.attributes));
+            // universalAttributes.push(this._getAttributeFromAttributes('Overall Per Salary'));
+
+            return universalAttributes;
+        },
+        _getPreviewAdditionalAttributes: function(playerData) {
+            var previewAdditionalAttributes = [];
+
+            previewAdditionalAttributes.push(this._getAttributeFromAttributes('Speed', playerData.attributes));
+            previewAdditionalAttributes.push(this._getAttributeFromAttributes('Wrist Shot Accuracy', playerData.attributes));
+            previewAdditionalAttributes.push(this._getAttributeFromAttributes('Offensive Awareness', playerData.attributes));
+
+            return previewAdditionalAttributes;
+        },
+        _getAttributeFromAttributes: function(attributeLongName, attributes) {
+            var attr = attributes.find((a) => {
+                return a.longName === attributeLongName;
+            });
+
+            return attr;
         }
     });
     </script>
