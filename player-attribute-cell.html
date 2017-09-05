@@ -15,11 +15,16 @@
                 line-height: 0.8;
             }
 
-            .container {
+            :host-context([is-compact]) .container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 max-width: 75px;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: row;
             }
 
             .league-percentile {
