@@ -49,7 +49,7 @@
         </style>
 
         <div class="container">
-            <div class="attribute-name">[[attributeName.shortName]]</div>
+            <div class="attribute-name">[[_getAttributeDisplayName(attribute,isCompact)]]</div>
             <div class="attribute-rankings">
                 <div class="attribute-value">[[attributeValue]]</div>
                 <div class="attribute-percentile">
@@ -72,8 +72,13 @@
     Polymer({
         is: 'player-attribute-cell',
         properties: {
+            isCompact: {
+                type: Boolean,
+                value: false,
+                reflectToAttribute: true
+            },
             attributeId: Number,
-            attributeName: {
+            attribute: {
                 type: String,
                 computed: '_getAttributeName(attributeId)'
             },
@@ -149,6 +154,9 @@
             } else {
                 return '-';
             }
+        },
+        _getAttributeDisplayName: function(attribute, compact) {
+            return compact ? attribute.shortName : attribute.longName;
         },
         _calculatePercentile: function(id, value, filterByPosition, filterByAvailability, playerPosition) {
             if (filterByPosition && playerPosition === '') {
