@@ -579,7 +579,7 @@ var dataProvider = {
                 playerId: 1,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 0.925
             },
             {
                 playerId: 1,
@@ -748,7 +748,7 @@ var dataProvider = {
                 playerId: 2,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 4.5
             },
             {
                 playerId: 2,
@@ -917,7 +917,7 @@ var dataProvider = {
                 playerId: 3,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 7.6
             },
             {
                 playerId: 3,
@@ -1086,7 +1086,7 @@ var dataProvider = {
                 playerId: 4,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6.75
             },
             {
                 playerId: 4,
@@ -1255,7 +1255,7 @@ var dataProvider = {
                 playerId: 5,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 0.925
             },
             {
                 playerId: 5,
@@ -1424,7 +1424,7 @@ var dataProvider = {
                 playerId: 6,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6.125
             },
             {
                 playerId: 6,
@@ -1593,7 +1593,7 @@ var dataProvider = {
                 playerId: 7,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 5.5
             },
             {
                 playerId: 7,
@@ -1763,7 +1763,7 @@ var dataProvider = {
                 playerId: 9,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 0.925
             },
             {
                 playerId: 9,
@@ -1932,7 +1932,7 @@ var dataProvider = {
                 playerId: 10,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 8.5
             },
             {
                 playerId: 10,
@@ -2101,7 +2101,7 @@ var dataProvider = {
                 playerId: 11,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6
             },
             {
                 playerId: 11,
@@ -2270,7 +2270,7 @@ var dataProvider = {
                 playerId: 12,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 9
             },
             {
                 playerId: 12,
@@ -2439,7 +2439,7 @@ var dataProvider = {
                 playerId: 13,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 0.925
             },
             {
                 playerId: 13,
@@ -2608,7 +2608,7 @@ var dataProvider = {
                 playerId: 14,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 5.6
             },
             {
                 playerId: 14,
@@ -2777,7 +2777,7 @@ var dataProvider = {
                 playerId: 15,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 8.275
             },
             {
                 playerId: 15,
@@ -2948,7 +2948,7 @@ var dataProvider = {
                 playerId: 18,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6.5
             },
             {
                 playerId: 18,
@@ -3117,7 +3117,7 @@ var dataProvider = {
                 playerId: 19,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 4
             },
             {
                 playerId: 19,
@@ -3286,7 +3286,7 @@ var dataProvider = {
                 playerId: 20,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 7.25
             },
             {
                 playerId: 20,
@@ -3457,7 +3457,7 @@ var dataProvider = {
                 playerId: 23,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6.125
             },
             {
                 playerId: 23,
@@ -3626,7 +3626,7 @@ var dataProvider = {
                 playerId: 24,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6
             },
             {
                 playerId: 24,
@@ -3795,7 +3795,7 @@ var dataProvider = {
                 playerId: 25,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 7.855
             },
             {
                 playerId: 25,
@@ -3965,7 +3965,7 @@ var dataProvider = {
                 playerId: 27,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 7.54
             },
             {
                 playerId: 27,
@@ -4134,7 +4134,7 @@ var dataProvider = {
                 playerId: 28,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 10
             },
             {
                 playerId: 28,
@@ -4303,7 +4303,7 @@ var dataProvider = {
                 playerId: 29,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 10.5
             },
             {
                 playerId: 29,
@@ -4473,7 +4473,7 @@ var dataProvider = {
                 playerId: 31,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 5.75
             },
             {
                 playerId: 31,
@@ -4642,7 +4642,7 @@ var dataProvider = {
                 playerId: 32,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 8.25
             },
             {
                 playerId: 32,
@@ -4811,7 +4811,7 @@ var dataProvider = {
                 playerId: 33,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 4.765
             },
             {
                 playerId: 33,
@@ -4980,7 +4980,7 @@ var dataProvider = {
                 playerId: 34,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6.875
             },
             {
                 playerId: 34,
@@ -5149,7 +5149,7 @@ var dataProvider = {
                 playerId: 35,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6.7
             },
             {
                 playerId: 35,
@@ -5318,7 +5318,7 @@ var dataProvider = {
                 playerId: 36,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 5.54
             },
             {
                 playerId: 36,
@@ -5488,7 +5488,7 @@ var dataProvider = {
                 playerId: 38,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 9.5
             },
             {
                 playerId: 38,
@@ -5657,7 +5657,7 @@ var dataProvider = {
                 playerId: 39,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 7.5
             },
             {
                 playerId: 39,
@@ -5826,7 +5826,7 @@ var dataProvider = {
                 playerId: 40,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 7.875
             },
             {
                 playerId: 40,
@@ -5995,7 +5995,7 @@ var dataProvider = {
                 playerId: 41,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 8
             },
             {
                 playerId: 41,
@@ -6164,7 +6164,7 @@ var dataProvider = {
                 playerId: 42,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 5.5
             },
             {
                 playerId: 42,
@@ -6333,7 +6333,7 @@ var dataProvider = {
                 playerId: 43,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 8.5
             },
             {
                 playerId: 43,
@@ -6502,7 +6502,7 @@ var dataProvider = {
                 playerId: 44,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 7
             },
             {
                 playerId: 44,
@@ -6671,7 +6671,7 @@ var dataProvider = {
                 playerId: 45,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 10.5
             },
             {
                 playerId: 45,
@@ -6840,7 +6840,7 @@ var dataProvider = {
                 playerId: 46,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 6.5
             },
             {
                 playerId: 46,
@@ -7009,7 +7009,7 @@ var dataProvider = {
                 playerId: 47,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 9.535
             },
             {
                 playerId: 47,
@@ -7179,7 +7179,7 @@ var dataProvider = {
                 playerId: 49,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 9.5
             },
             {
                 playerId: 49,
@@ -7348,7 +7348,7 @@ var dataProvider = {
                 playerId: 50,
                 attributeId: 4,
                 ratingPackId: 1,
-                attributeValue: 1000
+                attributeValue: 8.7
             },
             {
                 playerId: 50,
