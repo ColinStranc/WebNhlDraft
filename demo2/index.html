@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script>
+      
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+
+      // window.webNhlDraft = window.webNhlDraft || {};
+      // window.webNhlDraft.percentileFunctionality = 'well howdy';
+      
+    </script>
+    <script src="../dataProvider.js"></script>
+    <script src="../percentileFunctionality.js"></script>
+    <link rel="import" href="../player-card.html">
+  </head>
+
+  <style>
+    .component-display {
+      border: 1px solid;
+      margin: 10px;
+      padding: 5px;
+      display: inline-flex;
+    }
+  </style>
+
+  <body>
+      <div class="player-list"></div>
+  </body>
+  <script>
+        var listElement = document.querySelector('.player-list');
+        var players = window.webNhlDraft.dataProvider.getPlayersId();
+        for (var i = 0; i < players.length; i++) {
+            var playerCard = document.createElement('player-card');
+            playerCard.setAttribute('player-id', players[i]);
+            listElement.appendChild(playerCard);
+        }
+    </script>
+</html>

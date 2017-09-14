@@ -25,6 +25,9 @@ var dataProvider = {
 
         return this._createReturnablePlayerObjects(playersToReturn);
     },
+    getPlayersId: function() {
+        return this._rawData.players.map((p) => { return p.id; });
+    },
     _createReturnablePlayerObjects: function(returnedPlayersData) {
         var returnedPlayerObjects = [];
 
