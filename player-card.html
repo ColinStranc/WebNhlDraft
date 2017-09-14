@@ -25,6 +25,10 @@
                 border-bottom-style: solid;
             }
 
+            .attributes {
+                display: grid;
+            }
+
             .position-display[position=F] {
                 background-color: red; 
             }
@@ -62,6 +66,14 @@
                 display: inline-flex;
             }
 
+            .additional {
+                margin: 0 7px;
+            }
+
+            :host-context([hide-all-details]) .additional-details {
+                display: none;
+            }
+
             .see-more-bar {
                 border-top: 1px solid black;
                 text-align: center;
@@ -69,34 +81,50 @@
             }
         </style>
 
-        <div class="container">
-            <div class="team-display"></div>
-            <div class="details">
-                <div class="position-display"></div>
-                <div class="attributes">
-                    <div class="main-details">
-                        <div>
-                            <div>[[_playerData.position]]</div>
-                            <div>[[_playerData.handedness]]</div>
+        <div>
+            <div class="container">
+                <div class="team-display"></div>
+                <div class="details">
+                    <div class="position-display"></div>
+                    <div class="attributes">
+                        <div class="main-details">
+                            <div>
+                                <div>[[_playerData.position]]</div>
+                                <div>[[_playerData.handedness]]</div>
+                            </div>
+                            <div class="player-name">
+                                <div class="player-first-name">[[_playerData.firstName]]</div>
+                                <div class="player-last-name">[[_playerData.lastName]]</div>
+                            </div>
+                            <div class="universal-attributes-list">
+                                <template is="dom-repeat" items={{_universalAttributes}}>
+                                    <player-attribute-cell is-compact attribute-id="{{item.id}}" attribute-value="{{item.attributeValue}}" player-position="[[_playerData.position]]"></player-attribute-cell>
+                                </template>
+                            </div>
                         </div>
-                        <div class="player-name">
-                            <div class="player-first-name">[[_playerData.firstName]]</div>
-                            <div class="player-last-name">[[_playerData.lastName]]</div>
-                        </div>
-                        <div class="universal-attributes-list">
-                            <template is="dom-repeat" items={{_universalAttributes}}>
+                        <div class="additional-details-preview">
+                            <template is="dom-repeat" items={{_previewAdditionalAttributes}}>
                                 <player-attribute-cell is-compact attribute-id="{{item.id}}" attribute-value="{{item.attributeValue}}" player-position="[[_playerData.position]]"></player-attribute-cell>
                             </template>
                         </div>
+                        <div class="additional">
+                            <table class="additional-details">
+                                <template is="dom-repeat" items={{_fullDetailsAttributes}}>
+                                    <tr>
+                                        <template is="dom-repeat" items={{item}}>
+                                            <td>
+                                                <player-attribute-cell attribute-id="{{item.id}}" attribute-value="{{item.attributeValue}}" player-position="[[_playerData.position]]"></player-attribute-cell>
+                                            </td>
+                                        </template>
+                                    </tr>
+                                </template>
+                            </table>
+                            <div class="see-more-bar" on-click="_toggleMoreDetails">+</div>
+                        </div>
                     </div>
-                    <div class="additional-details-preview">
-                        <template is="dom-repeat" items={{_previewAdditionalAttributes}}>
-                            <player-attribute-cell is-compact attribute-id="{{item.id}}" attribute-value="{{item.attributeValue}}" player-position="[[_playerData.position]]"></player-attribute-cell>
-                        </template>
-                    </div>
-                    <div class="see-more-bar">+</div>
                 </div>
             </div>
+            
         </div>
     </template>
 
@@ -105,6 +133,11 @@
         is: 'player-card',
         properties: {
             playerId: Number,
+            hideAllDetails: {
+                type: Boolean,
+                value: true,
+                reflectToAttribute: true
+            },
             _playerData: {
                 type: Object,
                 computed: '_getPlayerObject(playerId)'
@@ -116,6 +149,10 @@
             _previewAdditionalAttributes: {
                 type: Array,
                 computed: '_getPreviewAdditionalAttributes(_playerData)'
+            },
+            _fullDetailsAttributes: {
+                type: Array,
+                computed: '_getFullDetailsAttributes(_playerData)'
             }
         },
         observers: [
@@ -142,6 +179,42 @@
 
             return previewAdditionalAttributes;
         },
+        _getFullDetailsAttributes: function(playerData) {
+            var fullDetailsAttributes = [];
+
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Deking', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Hand-Eye', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Passing', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Speed', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Acceleration', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Agility', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Wrist Shot Accuracy', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Wrist Shot Power', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Offensive Awareness', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Faceoffs', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Discipline', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Poise', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Defensive Awareness', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Shot Blocking', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Stick Checking', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Body Checking', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Strength', playerData.attributes));
+            fullDetailsAttributes.push(this._getAttributeFromAttributes('Aggressiveness', playerData.attributes));
+
+            var fullDetailsAttributesRows = [];
+
+            for (var i = 0; i < fullDetailsAttributes.length/3; i++) {
+                var fullDetailsAttributesRow = [];
+                
+                for (j = 0; j < 3; j++) {
+                    fullDetailsAttributesRow.push(fullDetailsAttributes[i*3+j]);
+                }
+
+                fullDetailsAttributesRows.push(fullDetailsAttributesRow);
+            }
+
+            return fullDetailsAttributesRows;
+        },
         _getAttributeFromAttributes: function(attributeLongName, attributes) {
             var attr = attributes.find((a) => {
                 return a.longName === attributeLongName;
@@ -161,6 +234,11 @@
             } else if (position === 'G') {
                 positionIndicator.setAttribute(positionAttributeName, 'G');
             }
+        },
+        _toggleMoreDetails: function() {
+            console.log('hi');
+            console.log(this.hideAllDetails);
+            this.hideAllDetails = !this.hideAllDetails;
         }
     });
     </script>

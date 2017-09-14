@@ -18,6 +18,8 @@
 - lots of other stuff too.
 - Preview row stacks things horizontally
 - add full detail attribute section, and the more link to make it appear
+- full details seperates normal and custom attributes
+- full details can take ~three times the width of normal cell
 
 ## percentile calculations ##
 - ascending vs. descending comparisons (aka overall vs. salary)
