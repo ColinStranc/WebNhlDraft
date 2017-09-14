@@ -24,6 +24,7 @@
 - notes section in full-details
 - full details can take ~three times the width of normal cell
 - team color should truly try to find actual owning team color.
+- show all stats in full-details
 
 ## percentile calculations ##
 - ascending vs. descending comparisons (aka overall vs. salary)
