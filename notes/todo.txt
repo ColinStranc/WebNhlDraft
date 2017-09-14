@@ -14,12 +14,16 @@
 - styles
     - well, lots still...
     - handedness and position seperated properly
-    - 
-- lots of other stuff too.
-- Preview row stacks things horizontally
-- add full detail attribute section, and the more link to make it appear
-- full details seperates normal and custom attributes
+    - make last name bigger/bolder
+    - section seperators more appropriate.
+    - manage the space between attribute-cells
+    - fix the added gap in the top row when full details shows up
+    - preview row text should not overlap the border
+    - align more-details attribute-cells better (on the overall perhaps?) This should probably wait till the attribute-cell long form themselves are given a good do-over.
+- custom attributes section in full-details
+- notes section in full-details
 - full details can take ~three times the width of normal cell
+- team color should truly try to find actual owning team color.
 
 ## percentile calculations ##
 - ascending vs. descending comparisons (aka overall vs. salary)
